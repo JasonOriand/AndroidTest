@@ -31,12 +31,6 @@
             android:layout_weight="1"
             android:text="取得天氣" />
 
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="編輯天氣資料" />
     </LinearLayout>
 
     <RelativeLayout
@@ -60,12 +54,26 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/noticeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="長按天氣資料可刪除"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
     <ListView
+        android:id="@+id/weatherListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#009999"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/noticeTextView" />
 </android.support.constraint.ConstraintLayout>

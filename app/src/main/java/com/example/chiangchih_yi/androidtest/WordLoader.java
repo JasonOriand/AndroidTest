@@ -30,21 +30,21 @@ public class WordLoader {
         this.storageInterface = storageInterface;
     }
 
-    public void getDailyWord(LoaderInterface loaderInterface) {
-        new WordTask().execute(loaderInterface);
+    public void getDailyWord(WordLoaderInterface wordLoaderInterface) {
+        new WordTask().execute(wordLoaderInterface);
     }
 
-    private class WordTask extends AsyncTask<LoaderInterface, Void, String> {
+    private class WordTask extends AsyncTask<WordLoaderInterface, Void, String> {
 
-        LoaderInterface loaderInterface;
+        WordLoaderInterface wordLoaderInterface;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
-        protected String doInBackground(LoaderInterface... params) {
-            loaderInterface = (LoaderInterface) params[0];
+        protected String doInBackground(WordLoaderInterface... params) {
+            wordLoaderInterface = (WordLoaderInterface) params[0];
 
             String word = null;
 
@@ -71,8 +71,8 @@ public class WordLoader {
                     storageInterface.refreshWord(result);
                 }
 
-                if (loaderInterface != null) {
-                    loaderInterface.refreshView();
+                if (wordLoaderInterface != null) {
+                    wordLoaderInterface.refreshWordView();
                 }
             }
         }
