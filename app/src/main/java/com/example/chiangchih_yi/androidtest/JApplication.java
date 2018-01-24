@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
  * Created by chiangchih-yi on 2018/1/24.
  */
 
-public class JApplication extends Application {
+public class JApplication extends Application implements StorageInterface {
 
     //model
     private static final String STORE_KEY_DAILY_WORD = "STORE_KEY_DAILY_WORD";
@@ -29,9 +29,10 @@ public class JApplication extends Application {
     }
 
     private void initLoader() {
-        WordLoader.getInstance().init(this);
+        WordLoader.getInstance().setStorageInterface(this);
     }
 
+    // interface method
     public void refreshWord(String word) {
         if (word != null) {
             SharedPreferences.Editor e = wordPrefs.edit();
@@ -40,6 +41,7 @@ public class JApplication extends Application {
         }
     }
 
+    // interface method
     public String getWord() {
         return wordPrefs.getString(STORE_KEY_DAILY_WORD, STORE_KEY_WORD_DEFAULT);
     }

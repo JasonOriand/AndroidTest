@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class WordLoader {
 
-    private JApplication jApplication;
+    private StorageInterface storageInterface;
 
     private static class WordLoaderHolder {
         private static final WordLoader INSTANCE = new WordLoader();
@@ -26,25 +26,25 @@ public class WordLoader {
         return WordLoaderHolder.INSTANCE;
     }
 
-    public void init(JApplication jApplication) {
-        this.jApplication = jApplication;
+    public void setStorageInterface(StorageInterface storageInterface) {
+        this.storageInterface = storageInterface;
     }
 
-    public void getDailyWord(MainActivity mainActivity) {
-        new WordTask().execute(mainActivity);
+    public void getDailyWord(LoaderInterface loaderInterface) {
+        new WordTask().execute(loaderInterface);
     }
 
-    private class WordTask extends AsyncTask<MainActivity, Void, String> {
+    private class WordTask extends AsyncTask<LoaderInterface, Void, String> {
 
-        MainActivity mainActivity;
+        LoaderInterface loaderInterface;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
-        protected String doInBackground(MainActivity... params) {
-            mainActivity = (MainActivity) params[0];
+        protected String doInBackground(LoaderInterface... params) {
+            loaderInterface = (LoaderInterface) params[0];
 
             String word = null;
 
@@ -56,7 +56,6 @@ public class WordLoader {
 
                 word = title.get(0).text();
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -68,13 +67,13 @@ public class WordLoader {
             super.onPostExecute(result);
 
             if(result != null) {
-                if(jApplication != null) {
-                    jApplication.refreshWord(result);
+                if(storageInterface != null) {
+                    storageInterface.refreshWord(result);
                 }
-            }
 
-            if (mainActivity != null) {
-                mainActivity.refreshWordView();
+                if (loaderInterface != null) {
+                    loaderInterface.refreshView();
+                }
             }
         }
     }

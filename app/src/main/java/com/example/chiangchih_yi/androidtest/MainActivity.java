@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderInterface {
 
-    private JApplication jApplication;
+    private StorageInterface storageInterface;
 
     //view
     private TextView wordTextView;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.jApplication = (JApplication)getApplication();
+        this.storageInterface = (StorageInterface)getApplication();
 
         initView();
     }
@@ -46,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
         weatherButton=(Button)findViewById(R.id.weatherButton);
         editButton=(Button)findViewById(R.id.editButton);
 
-        this.refreshWordView();
+        this.refreshView();
     }
 
-    public void refreshWordView() {
-        String word = this.jApplication.getWord();
+    // interface method
+    public void refreshView() {
+        String word = this.storageInterface.getWord();
 
         if (word != null && !word.equalsIgnoreCase(wordTextView.getText().toString())) {
             wordTextView.setText(word);
