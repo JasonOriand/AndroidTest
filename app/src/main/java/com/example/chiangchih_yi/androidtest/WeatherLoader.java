@@ -79,11 +79,7 @@ public class WeatherLoader {
 
             if(result != null) {
                 if(storageInterface != null) {
-                    storageInterface.refreshWeather(result);
-                }
-
-                if (WeatherLoaderInterface != null) {
-                    WeatherLoaderInterface.refreshWeatherView();
+                    storageInterface.refreshWeather(result, WeatherLoaderInterface);
                 }
             }
         }

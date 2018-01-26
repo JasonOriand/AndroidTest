@@ -68,11 +68,7 @@ public class WordLoader {
 
             if(result != null) {
                 if(storageInterface != null) {
-                    storageInterface.refreshWord(result);
-                }
-
-                if (wordLoaderInterface != null) {
-                    wordLoaderInterface.refreshWordView();
+                    storageInterface.refreshWord(result, wordLoaderInterface);
                 }
             }
         }

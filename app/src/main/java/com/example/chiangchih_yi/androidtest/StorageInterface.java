@@ -8,10 +8,10 @@ import java.util.Set;
 
 public interface StorageInterface {
 
-    public void refreshWord(String word);
+    public void refreshWord(String word, WordLoaderInterface wordLoaderInterface);
     public String getWord();
 
-    public void refreshWeather(Set<String> weathers);
+    public void refreshWeather(Set<String> weathers, WeatherLoaderInterface weatherLoaderInterface);
     public Set<String> getWeather();
 
 }
