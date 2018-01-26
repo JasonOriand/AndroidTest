@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements WordLoaderInterfa
                                 for(int i=0 ; i<weatherAdapter.getCount() ; i++){
                                     tempWeather.add(weatherAdapter.getItem(i));
                                 }
-                                storageInterface.refreshWeather(tempWeather, MainActivity.this);
+                                storageInterface.refreshWeather(tempWeather, null);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
