@@ -44,7 +44,7 @@ public class WordLoader {
         }
 
         protected String doInBackground(WordLoaderInterface... params) {
-            wordLoaderInterface = (WordLoaderInterface) params[0];
+            wordLoaderInterface = params[0];
 
             String word = null;
 

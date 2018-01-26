@@ -48,7 +48,7 @@ public class WeatherLoader {
         }
 
         protected Set<String> doInBackground(WeatherLoaderInterface... params) {
-            WeatherLoaderInterface = (WeatherLoaderInterface) params[0];
+            WeatherLoaderInterface = params[0];
 
             Set<String> weathers = null;
 
